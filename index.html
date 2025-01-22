@@ -13,15 +13,25 @@
 
       <label for="author"> Author </label>
       <input type="text" name="author" />
+
+      <label for="pages"> pages </label>
+      <input type="number" name="pages" />
+
+      <label for="read"> read </label>
+      <input type="checkbox" name="read" />
+
       <button type="submit">Submit</button>
     </form>
     <br />
     <table id="booksTable">
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Option</th>
-      </tr>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read</th>
+          <th>Toggle Read</th>
+          <th>Delete</th>
+        </tr>
     </table>
     <script src="script.js"></script>
   </body>
