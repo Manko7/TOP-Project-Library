@@ -6,33 +6,29 @@
     <title>Document</title>
   </head>
   <body>
-    <button id="showForm" onClick="showForm()">Add Book</button>
-    <form action="#" method="post" id="bookform">
-      <label for="title"> Title </label>
-      <input type="text" name="title" />
+    <div class="all">
+      <div class="header">
+        <button id="showForm" onClick="showForm()">Add Book</button>
+        <form action="#" method="post" id="bookform">
+          <label for="title"> Title </label>
+          <input type="text" name="title" />
 
-      <label for="author"> Author </label>
-      <input type="text" name="author" />
+          <label for="author"> Author </label>
+          <input type="text" name="author" />
 
-      <label for="pages"> pages </label>
-      <input type="number" name="pages" />
+          <label for="pages"> pages </label>
+          <input type="number" name="pages" />
 
-      <label for="read"> read </label>
-      <input type="checkbox" name="read" />
+          <label for="read"> read </label>
+          <input type="checkbox" name="read" />
 
-      <button type="submit">Submit</button>
-    </form>
-    <br />
-    <table id="booksTable">
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Pages</th>
-          <th>Read</th>
-          <th>Toggle Read</th>
-          <th>Delete</th>
-        </tr>
-    </table>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <div class="body">
+        <div id="library"></div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
