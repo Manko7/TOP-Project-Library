@@ -95,7 +95,13 @@ function updateTable() {
   }
   myLibrary.map((bookItem) => {
     const bookBox = document.createElement("div");
-    bookBox.className = "book";
+    if (bookItem.read) {
+      console.log("changing to read");
+      bookBox.className = "bookDone";
+    } else {
+      bookBox.className = "book";
+    }
+
     bookBox.id = idCounter;
 
     const bookTitle = document.createElement("div");
@@ -110,28 +116,27 @@ function updateTable() {
     bookPages.className = "bookPages";
     bookPages.innerHTML = bookItem.pages;
 
-    const bookStatus = document.createElement("div");
-    bookStatus.className = "bookStatus";
-    if (bookItem.status === false) {
-      bookStatus.innerHTML = "Not read";
-    } else {
-      bookStatus.innerHTML = "Done";
-    }
+    const bookDivider = document.createElement("div");
+    bookDivider.className = "bookDivider";
 
     const deleteButton = document.createElement("button");
     deleteButton.className = "delButton";
-    deleteButton.innerHTML = "Delete";
+    deleteButton.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="currentColor"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>';
     deleteButton.onclick = () => {
       myLibrary = myLibrary.filter((libItem) => libItem.id != bookItem.id);
       updateTable();
     };
 
     const updateButton = document.createElement("button");
-    updateButton.className = "upButton";
     if (bookItem.read) {
-      updateButton.innerHTML = "mark as unread";
+      updateButton.className = "upButtonActive";
+      updateButton.innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="currentColor"><path d="M480-160q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740v484q51-32 107-48t113-16q36 0 70.5 6t69.5 18v-480q15 5 29.5 10.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Zm80-200v-380l200-200v400L560-360Zm-160 65v-396q-33-14-68.5-21.5T260-720q-37 0-72 7t-68 21v397q35-13 69.5-19t70.5-6q36 0 70.5 6t69.5 19Zm0 0v-396 396Z"/></svg>';
     } else {
-      updateButton.innerHTML = "mark as read";
+      updateButton.className = "upButtonInactive";
+      updateButton.innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="currentColor"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>';
     }
     updateButton.onclick = () => {
       if (myLibrary[bookItem.id - 1].read) {
@@ -145,9 +150,9 @@ function updateTable() {
     bookBox.appendChild(bookTitle);
     bookBox.appendChild(bookAuthor);
     bookBox.appendChild(bookPages);
-    bookBox.appendChild(bookStatus);
-    bookBox.appendChild(deleteButton);
-    bookBox.appendChild(updateButton);
+    bookBox.appendChild(bookDivider);
+    bookDivider.appendChild(updateButton);
+    bookDivider.appendChild(deleteButton);
 
     library.appendChild(bookBox);
   });
