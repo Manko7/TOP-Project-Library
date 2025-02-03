@@ -8,7 +8,7 @@ body {
 }
 
 #bookform {
-  /* display: none; */
+  display: none;
 }
 
 .all {
@@ -50,9 +50,10 @@ body {
 }
 
 #library {
+  text-align: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
-  grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
   gap: 40px;
 }
 

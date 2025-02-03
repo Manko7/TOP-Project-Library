@@ -7,7 +7,7 @@ const library = document.getElementById("library");
 console.log(bookTable);
 let idCounter = 1;
 
-const myLibrary = [];
+var myLibrary = [];
 
 function Book(id, title, author, pages, read) {
   this.id = id;
@@ -39,25 +39,15 @@ const book2 = new Book(
   1231,
   false
 );
-
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
-addBookToLibrary(book1);
 addBookToLibrary(book2);
 
-function removeBookFromLibrary(id) {
-  myLibrary = myLibrary.filter((item) => {});
+const book3 = new Book(idCounter, "Die drei ???", "Max KA", 9999, true);
+addBookToLibrary(book3);
+
+function removeBookFromLibrary(bookId) {
+  console.log(bookId);
+  myLibrary = myLibrary.filter((item) => item.id != bookId);
+  console.log(myLibrary);
 }
 
 function parseFormData(e) {
@@ -84,6 +74,11 @@ bookForm.addEventListener("submit", (e) => parseFormData(e));
 console.table(myLibrary);
 
 function updateTable() {
+  let books = document.getElementsByClassName("book");
+  while (books.length > 0) {
+    books[0].parentNode.removeChild(books[0]);
+  }
+  console.log(books);
   myLibrary.map((bookItem) => {
     const bookBox = document.createElement("div");
     bookBox.className = "book";
@@ -111,7 +106,12 @@ function updateTable() {
     const deleteButton = document.createElement("button");
     deleteButton.className = "delButton";
     deleteButton.innerHTML = "Delete";
-    deleteButton.onclick = removeBookFromLibrary(this);
+    deleteButton.onclick = () => {
+      console.log(bookItem);
+      myLibrary = myLibrary.filter((libItem) => libItem.id != bookItem.id);
+      console.log(myLibrary);
+      updateTable();
+    };
 
     bookBox.appendChild(bookTitle);
     bookBox.appendChild(bookAuthor);
