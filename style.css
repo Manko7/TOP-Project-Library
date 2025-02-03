@@ -28,21 +28,55 @@ body {
   text-align: center;
   justify-items: space-evenly;
   align-items: center;
+  box-shadow: 10px 0px 15px rgba(0, 255, 0, 0.8);
+}
+.header form {
+  display: flex;
+  flex-direction: column;
+}
+.header input {
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgba(52, 52, 52, 1);
+  border: 1pxs rgba(52, 52, 52, 1) solid;
+  color: white;
+  font-size: 30px;
+  font-weight: bolder;
+  padding: 5px;
+}
+.header label {
+  text-align: start;
+  padding-top: 20px;
+}
+.lowerForm {
+  display: flex;
+  justify-content: space-evenly;
+}
+.lowerForm div {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  width: 100px;
+}
+.lfpart1 {
+}
+.lfpart2 {
+  color: rgba(52, 52, 52, 1);
+  border: rgba(52, 52, 52, 1);
 }
 .header button {
   text-align: center;
   width: 200px;
   padding-top: 20px;
   padding-bottom: 20px;
-  border: 4px white solid;
+  border: 4px rgba(52, 52, 52, 1) solid;
   background-color: transparent;
-  color: white;
+  color: rgba(52, 52, 52, 1);
   font-size: 20px;
   font-weight: bolder;
-}
-.header form {
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+  justify-self: center;
+  align-self: center;
 }
 
 .body {
@@ -62,7 +96,7 @@ body {
   border-radius: 20px;
   background-color: rgba(52, 52, 52, 1);
   color: rgba(51, 222, 27, 1);
-  box-shadow: 5px 5px 20px rgba(0, 255, 0, 0.8);
+  box-shadow: 5px 5px 10px rgba(0, 255, 0, 0.8);
   padding: 30px;
   height: 250px;
   display: flex;
