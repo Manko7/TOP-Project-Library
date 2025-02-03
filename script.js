@@ -27,7 +27,7 @@ const book1 = new Book(
   "A Song of Fire and Ice",
   "J.R.R. Tolkien",
   1231,
-  false
+  true
 );
 
 addBookToLibrary(book1);
@@ -43,6 +43,15 @@ addBookToLibrary(book2);
 
 const book3 = new Book(idCounter, "Die drei ???", "Max KA", 9999, true);
 addBookToLibrary(book3);
+
+const book4 = new Book(
+  idCounter,
+  "Die Ritter der Tafelrunde",
+  "KAN PLAN OIDA",
+  32214,
+  true
+);
+addBookToLibrary(book4);
 
 function removeBookFromLibrary(bookId) {
   console.log(bookId);
@@ -66,7 +75,13 @@ function parseFormData(e) {
 }
 
 function showForm() {
-  bookForm.style.display = "block";
+  if (formButton.innerHTML === "Add Book") {
+    bookForm.style.display = "flex";
+    formButton.innerHTML = "Done";
+  } else {
+    bookForm.style.display = "none";
+    formButton.innerHTML = "Add Book";
+  }
 }
 
 bookForm.addEventListener("submit", (e) => parseFormData(e));
@@ -78,11 +93,11 @@ function updateTable() {
   while (books.length > 0) {
     books[0].parentNode.removeChild(books[0]);
   }
-  console.log(books);
   myLibrary.map((bookItem) => {
     const bookBox = document.createElement("div");
     bookBox.className = "book";
     bookBox.id = idCounter;
+
     const bookTitle = document.createElement("div");
     bookTitle.className = "bookTitle";
     bookTitle.innerHTML = bookItem.title;
@@ -107,9 +122,23 @@ function updateTable() {
     deleteButton.className = "delButton";
     deleteButton.innerHTML = "Delete";
     deleteButton.onclick = () => {
-      console.log(bookItem);
       myLibrary = myLibrary.filter((libItem) => libItem.id != bookItem.id);
-      console.log(myLibrary);
+      updateTable();
+    };
+
+    const updateButton = document.createElement("button");
+    updateButton.className = "upButton";
+    if (bookItem.read) {
+      updateButton.innerHTML = "mark as unread";
+    } else {
+      updateButton.innerHTML = "mark as read";
+    }
+    updateButton.onclick = () => {
+      if (myLibrary[bookItem.id - 1].read) {
+        myLibrary[bookItem.id - 1].read = false;
+      } else {
+        myLibrary[bookItem.id - 1].read = true;
+      }
       updateTable();
     };
 
@@ -118,6 +147,7 @@ function updateTable() {
     bookBox.appendChild(bookPages);
     bookBox.appendChild(bookStatus);
     bookBox.appendChild(deleteButton);
+    bookBox.appendChild(updateButton);
 
     library.appendChild(bookBox);
   });
