@@ -22,35 +22,29 @@ function addBookToLibrary(book) {
   idCounter += 1;
 }
 
-const book1 = new Book(
-  idCounter,
-  "A Song of Fire and Ice",
-  "J.R.R. Tolkien",
-  1231,
-  true
-);
+const book1 = new Book(idCounter, "The Hobbit", "J.R.R. Tolkien", 310, false);
 
 addBookToLibrary(book1);
 
 const book2 = new Book(
   idCounter,
-  "Harry Potter #1",
-  "J.K. Rowlings",
-  1231,
-  false
+  "Harry Potter and the Philosopher's Stone",
+  "J.K. Rowling",
+  870,
+  true
 );
 addBookToLibrary(book2);
 
-const book3 = new Book(idCounter, "Die drei ???", "Max KA", 9999, true);
+const book3 = new Book(
+  idCounter,
+  "Alice's Adventures in Wonderland",
+  "Lewis Carroll",
+  352,
+  false
+);
 addBookToLibrary(book3);
 
-const book4 = new Book(
-  idCounter,
-  "Die Ritter der Tafelrunde",
-  "KAN PLAN OIDA",
-  32214,
-  true
-);
+const book4 = new Book(idCounter, "The Da Vinci Code", "Dan Brown", 689, true);
 addBookToLibrary(book4);
 
 function removeBookFromLibrary(bookId) {
