@@ -93,6 +93,10 @@ function updateTable() {
   while (books.length > 0) {
     books[0].parentNode.removeChild(books[0]);
   }
+  let donebooks = document.getElementsByClassName("bookDone");
+  while (donebooks.length > 0) {
+    donebooks[0].parentNode.removeChild(donebooks[0]);
+  }
   myLibrary.map((bookItem) => {
     const bookBox = document.createElement("div");
     if (bookItem.read) {
